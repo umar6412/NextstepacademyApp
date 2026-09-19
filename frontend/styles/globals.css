@@ -1,0 +1,294 @@
+/* globals.css — NextStep Academy Premium Futuristic Theme */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════ CSS VARIABLES ═══════════ */
+:root {
+  --bg-primary: #060613;
+  --bg-secondary: #0a0a1f;
+  --purple-accent: #7c3aed;
+  --purple-light: #a78bfa;
+  --cyan-accent: #22d3ee;
+  --cursor-x: 50%;
+  --cursor-y: 50%;
+}
+
+/* ═══════════ BASE ═══════════ */
+html, body {
+  min-height: 100%;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: #e2e8f0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: #7c3aed;
+  color: #ffffff;
+}
+
+/* ═══════════ SCROLLBAR ═══════════ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0a0a1f; }
+::-webkit-scrollbar-thumb { background: #7c3aed44; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+
+/* ═══════════ GLASSMORPHISM ═══════════ */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-strong {
+  background: rgba(10, 10, 31, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ═══════════ PARTICLE ANIMATIONS ═══════════ */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(10px, -15px); }
+  50% { transform: translate(-8px, -25px); }
+  75% { transform: translate(12px, -10px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes driftSlow {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -10px) scale(1.02); }
+  66% { transform: translate(-15px, 10px) scale(0.98); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* ═══════════ GRID PATTERN ═══════════ */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ═══════════ CTA SHINE SWEEP ═══════════ */
+@keyframes shineSweep {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(250%) skewX(-15deg); }
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: translateX(-100%) skewX(-15deg);
+  animation: shineSweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ═══════════ TYPEWRITER CURSOR ═══════════ */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  background: #a78bfa;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: cursorBlink 1s step-end infinite;
+}
+
+/* ═══════════ FLOATING CARDS ═══════════ */
+@keyframes floatCard1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(0.8deg); }
+}
+
+@keyframes floatCard2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(-0.6deg); }
+}
+
+@keyframes floatCard3 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.float-card-1 { animation: floatCard1 3.5s ease-in-out infinite; }
+.float-card-2 { animation: floatCard2 4.2s ease-in-out infinite; }
+.float-card-3 { animation: floatCard3 3.8s ease-in-out infinite; }
+
+.float-card-1:hover,
+.float-card-2:hover,
+.float-card-3:hover {
+  animation-play-state: paused;
+  transform: scale(1.05);
+}
+
+/* ═══════════ GLOW EFFECTS ═══════════ */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.35), 0 0 80px rgba(124, 58, 237, 0.08); }
+}
+
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-25px, 20px) scale(0.96); }
+  66% { transform: translate(15px, -25px) scale(1.04); }
+}
+
+/* ═══════════ ANIMATED UNDERLINE ═══════════ */
+.animated-underline {
+  position: relative;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+  transition: width 0.3s ease;
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* ═══════════ GRADIENT BORDER CARD ═══════════ */
+.gradient-border-card {
+  position: relative;
+  background: rgba(10, 10, 31, 0.9);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gradient-border-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1.25rem;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(59, 130, 246, 0.1), rgba(217, 70, 239, 0.2));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.gradient-border-card:hover::before {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.6), rgba(59, 130, 246, 0.3), rgba(217, 70, 239, 0.5));
+}
+
+.gradient-border-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(124, 58, 237, 0.2);
+}
+
+/* ═══════════ SIFAL BITZ LEGACY CLASSES (used by other pages) ═══════════ */
+.sifal-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sifal-card:hover {
+  border-color: #c4b5fd;
+  box-shadow: 0 15px 35px -5px rgba(124, 58, 237, 0.12);
+  transform: translateY(-2px);
+}
+
+.sifal-gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #7c3aed 50%, #d946ef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ═══════════ SCROLL REVEAL (used by other pages) ═══════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ═══════════ REDUCED MOTION ═══════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .float-card-1, .float-card-2, .float-card-3 {
+    animation: none !important;
+  }
+  .btn-shine::after {
+    animation: none !important;
+  }
+  .typewriter-cursor {
+    animation: none !important;
+    opacity: 1;
+  }
+}
